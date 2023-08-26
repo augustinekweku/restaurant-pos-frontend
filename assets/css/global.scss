@@ -1,0 +1,99 @@
+.space {
+  margin: 10px 0;
+}
+
+/* STYLE FOR THE IMAGE CARD */
+
+.item-card {
+  background: white;
+  min-width: 250px;
+  display: inline-block;
+  margin: auto;
+  border-radius: 19px;
+  /* position: relative; */
+  /* text-align: center; */
+  box-shadow: -1px 7px 17px -12px black;
+  z-index: 9999;
+  margin-bottom: 20px;
+}
+
+.item-card__image {
+  position: relative;
+  height: 230px;
+  margin-bottom: 15px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  background-size: cover;
+}
+
+.item-card__title {
+  color: #ec9b3b;
+  text-align: center;
+  margin-top: -5px;
+}
+
+.item-card__description {
+  padding: 0px 10px 10px 30px;
+  /* margin-bottom: 5px; */
+}
+
+.item-card__footer {
+  background: #ec9b3b;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  color: white;
+  font-size: large;
+}
+
+/* END OF STYLE FOR THE IMAGE CARD */
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff !important;
+  background-color: orange !important;
+  border-color: orange !important;
+}
+.page-link {
+  color: orange !important;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.add_fab {
+  top: 140px !important;
+  right: 80px !important;
+  background: orange;
+  float: right;
+}
+
+.ivu-card-head {
+  padding: 7px 8px !important;
+}
+.table_card .ivu-card-body {
+  padding: 9px !important;
+}
+.welcome-page,
+.dashboard-page {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.container-fluid {
+  padding: 0 !important;
+}
+._mini_main_layout {
+  margin-left: 75px !important;
+}
+._main_layout {
+  padding-top: 60px !important;
+}
+
+.hero-text {
+  margin: auto;
+}
+a {
+  text-decoration: none !important;
+}
+.ivu-tooltip-content,
+.ivu-tooltip-inner {
+  z-index: 99 !important;
+}
