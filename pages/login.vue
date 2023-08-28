@@ -32,18 +32,21 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
 import DI from "~/plugins/di-container";
+import { LoginPayload } from "~/respositories/auth-repository";
 
-export default {
+export default defineComponent({
   layout: "unauthenticated",
   data() {
     return {
       data: {
         email: "",
         password: "",
-      },
+      } as LoginPayload,
       isLogging: false,
+      errorMsg: "sdsds",
     };
   },
   methods: {
@@ -64,36 +67,46 @@ export default {
           desc: "Password must be more than 6 characters",
         });
       this.isLogging = true;
-      const res = await DI.newAuthService.login(this.data);
-      if (res.status === 200) {
-        this.success(res.data.msg);
-        window.location = "/";
-      } else {
-        if (res.status === 401) {
-          this.error(res.data.msg);
-        } else if (res.status === 422) {
-          for (let i in res.data.errors) {
-            this.error(res.data.errors[i][0]);
-          }
-        } else {
-          this.swr();
-        }
+      try {
+        const res = await DI.authService.login(this.data);
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+        this.errorMsg = error as string;
+        return this.$Notice.error({
+          title: "Error",
+          desc: error as string,
+        });
       }
+      // if (res.status === 200) {
+      //   this.success(res.data.msg);
+      //   window.location = "/";
+      // } else {
+      //   if (res.status === 401) {
+      //     this.error(res.data.msg);
+      //   } else if (res.status === 422) {
+      //     for (let i in res.data.errors) {
+      //       this.error(res.data.errors[i][0]);
+      //     }
+      //   } else {
+      //     this.swr();
+      //   }
+      // }
       this.isLogging = false;
     },
 
     mounted() {
       // prints 'Hello Browser!' to the browser's console
-      this.$hello("Browser");
+      // this.$hello("Browser");
       console.log("first");
     },
   },
 
   mounted() {
     // prints 'Hello Browser!' to the browser's console
-    this.$hello("Browser");
+    // this.$hello("Browser");
   },
-};
+});
 </script>
 
 <style scoped>
@@ -128,3 +141,6 @@ export default {
   color: #000;
 }
 </style>
+
+function createError(arg0: number, arg1: string) { throw new Error("Function not
+implemented."); }

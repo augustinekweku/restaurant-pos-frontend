@@ -10,8 +10,18 @@ export type GetTodoResponse = {
   completed: boolean;
 };
 
+export type LoginPayload = {
+  email: string;
+  password: string;
+};
+
+export type LoginResponse = {
+  token: string;
+  user: {};
+};
+
 export default class AuthRepository {
-  BASE_URL = "https://jsonplaceholder.typicode.com";
+  BASE_URL = "http://127.0.0.1:8000/api";
   constructor() {}
   //
   async getTodo() {
@@ -21,5 +31,11 @@ export default class AuthRepository {
     );
     return res.data;
   }
-  async login() {}
+  async login(payload: LoginPayload) {
+    const res = await $axios.post<ApiResponse<LoginResponse>>(
+      `${this.BASE_URL}/login`,
+      payload
+    );
+    return res.data;
+  }
 }

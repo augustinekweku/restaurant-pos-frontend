@@ -3,12 +3,12 @@ import AuthRepository from "~/respositories/auth-repository";
 import AuthService from "~/services/auth-service";
 import { $axios } from "~/utils/api";
 
-const newAuthRepository = new AuthRepository();
+const authRepository = new AuthRepository();
 
-const newAuthService = new AuthService(newAuthRepository);
+const authService = new AuthService(authRepository);
 
 const DI = {
-  newAuthService,
+  authService,
 };
 
 export default DI;

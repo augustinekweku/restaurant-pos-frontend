@@ -1,5 +1,5 @@
 import { NuxtAxiosInstance } from "@nuxtjs/axios";
-import AuthRepository from "~/respositories/auth-repository";
+import AuthRepository, { LoginPayload } from "~/respositories/auth-repository";
 import { $axios } from "~/utils/api";
 
 export default class AuthService {
@@ -7,6 +7,11 @@ export default class AuthService {
 
   async getTodo() {
     const res = await this.authRepository.getTodo();
+    return res;
+  }
+
+  async login(payload: LoginPayload) {
+    const res = await this.authRepository.login(payload);
     return res;
   }
 }

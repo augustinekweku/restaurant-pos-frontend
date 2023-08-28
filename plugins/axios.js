@@ -4,9 +4,10 @@ console.log("axios.js")
 export default function ({ $axios, error: nuxtError }) {
     $axios.onError(error => {
       nuxtError({
-        statusCode: error.response.status,
-        message: error.message,
+        statusCode: error.response.status ,
+        message: error.message + "axioshereeee",
       });
+      
       return Promise.resolve(false);
     })
     let accessToken = false

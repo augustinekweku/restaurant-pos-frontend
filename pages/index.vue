@@ -12,8 +12,8 @@ import DI from "../plugins/di-container";
 export default defineComponent({
   setup() {
     async function fetchSomething() {
-      const ip = await DI.newAuthService.getTodo();
-      console.log({ ip });
+      const ip = await DI.authService.getTodo();
+      console.log(ip.data);
     }
     fetchSomething();
   },
